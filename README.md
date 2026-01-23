@@ -10,52 +10,10 @@ A robust **Hybrid Cloud Security System** that bridges On-Premise infrastructure
 
 ## 🏗️ Architecture Topology
 
-```mermaid
-flowchart LR
-    %% Definisi Style %%
-    classDef aws fill:#FF9900,stroke:#232F3E,color:white,stroke-width:2px;
-    classDef onprem fill:#5A6B86,stroke:#232F3E,color:white,stroke-width:2px;
-    classDef monitor fill:#E7157B,stroke:#232F3E,color:white,stroke-width:2px;
-    classDef app fill:#0088cc,stroke:#232F3E,color:white,stroke-width:2px;
+![White and Blue Professional Modern Technology Pitch Deck Presentation](https://github.com/user-attachments/assets/21741384-c326-4fbc-9e85-a619174411d8)
 
-    subgraph OnPrem ["🏢 On-Premise (Proxmox)"]
-        direction TB
-        Attacker[("👾 Attacker")]
-        VM[("💻 Linux Server")]
-        Agent[("⚙️ CW Agent")]
-    end
 
-    subgraph AWS ["☁️ AWS Cloud"]
-        direction LR
-        CWLogs[("📄 Logs")]
-        Filter[("🔍 Metric Filter")]
-        Alarm[("⏰ Alarm")]
-        SNS[("🔔 SNS")]
-        Lambda[("λ Lambda (Python)")]
-    end
 
-    subgraph User ["📱 End User"]
-        Telegram[("Telegram Bot")]
-    end
-
-    %% Flow %%
-    Attacker -->|SSH Brute Force| VM
-    VM -->|Auth Log| Agent
-    Agent -->|HTTPS Stream| CWLogs
-    CWLogs --> Filter
-    Filter -->|Threshold > 3| Alarm
-    Alarm --> SNS
-    SNS -->|Trigger| Lambda
-    Lambda -->|1. Query Insight| CWLogs
-    Lambda -->|2. Geo-Enrichment| Telegram
-
-    %% Styles %%
-    class Lambda,SNS aws;
-    class VM,Agent,Attacker onprem;
-    class CWLogs,Filter,Alarm monitor;
-    class Telegram app;
-
-```
 
 ## 🚀 Key Features
 
